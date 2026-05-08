@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const authRoutes = require('./routes/authRoutes');
 const pizzaRoutes = require('./routes/pizzaRoutes');
+const categoryRoutes = require('./routes/categoryRoutes');
 const { errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
@@ -22,6 +23,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use('/api/auth', authRoutes);
 app.use('/api/pizzas', pizzaRoutes);
+app.use('/api/categories', categoryRoutes);
 
 app.use(errorHandler);
 
