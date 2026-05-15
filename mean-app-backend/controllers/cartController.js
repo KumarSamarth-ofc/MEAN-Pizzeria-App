@@ -2,18 +2,30 @@ const Cart = require('../models/Cart');
 
 
 exports.getCart = async (req, res, next) => {
-try {
-    let cart = await Cart.findOne({ user: req.user.id }).populate('items.pizzaitems.toppings');
-    if (!cart) {
-    cart = new Cart({ user: req.user.id, items: [] });
-    await cart.save();
-    }
-    res.json(cart);
-    } catch (err) {
-    next(err);
-    }
-};
+  try {
 
+    let cart = await Cart.findOne({
+      user: req.user.id
+    })
+    .populate("items.pizza")
+    .populate("items.toppings");
+
+    if (!cart) {
+
+      cart = new Cart({
+        user: req.user.id,
+        items: []
+      });
+
+      await cart.save();
+    }
+
+    res.json(cart);
+
+  } catch (err) {
+    next(err);
+  }
+};
 
 exports.addToCart = async (req, res, next) => {
 try {
