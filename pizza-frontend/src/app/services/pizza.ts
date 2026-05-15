@@ -3,10 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environments';
 
 
-@Injectable()
+@Injectable({
+  providedIn:'root'
+})
   
   
-export class PizzaService {
+export class Pizza {
   private apiUrl = environment.apiUrl + '/pizzas';
   constructor(private http: HttpClient) {}
   getPizzas(categoryId?: string) {
@@ -17,7 +19,7 @@ export class PizzaService {
     return this.http.get<any[]>(url);
   }
 
-  
+
   getPizza(id: string) {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }

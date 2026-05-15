@@ -31,7 +31,7 @@ export class Auth {
     this.loggedIn.next(false);
   }
 
-  private hasToken(): boolean {
+  hasToken(): boolean {
     return !!localStorage.getItem('token');
   }
 }

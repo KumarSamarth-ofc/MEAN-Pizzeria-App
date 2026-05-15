@@ -6,7 +6,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class Cart {
+export class CartService {
   private apiUrl = environment.apiUrl + '/cart';
 
   cart = new BehaviorSubject<any>(null);
