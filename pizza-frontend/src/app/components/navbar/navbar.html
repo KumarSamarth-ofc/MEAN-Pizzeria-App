@@ -1,1 +1,13 @@
-<p>navbar works!</p>
+<!-- src/app/components/navbar/navbar.component.html -->
+<nav class="navbar">
+<a routerLink="/home">Pizzeria</a>
+<ul>
+<li><a routerLink="/home">Order Pizza</a></li>
+<li><a routerLink="/build-pizza" *ngIf="auth.hasToken()">Build Your Pizza</a></li>
+<li><a routerLink="/cart" *ngIf="auth.hasToken()">Shopping Cart
+({{cartCount}})</a></li>
+<li><a routerLink="/login" *ngIf="!auth.hasToken()">Login</a></li>
+<li><a routerLink="/register" *ngIf="!auth.hasToken()">Register</a></li>
+<li><button (click)="logout()" *ngIf="auth.hasToken()">Logout</button></li>
+</ul>
+</nav>

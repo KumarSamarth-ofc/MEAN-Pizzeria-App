@@ -1,1 +1,84 @@
-<p>register works!</p>
+<div class="register-container">
+
+  <h2>Create Account</h2>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+  >
+
+    <input
+      type="text"
+      placeholder="Full Name"
+      formControlName="name"
+    >
+
+    <div
+      class="error"
+      *ngIf="
+        form.get('name')?.touched &&
+        form.get('name')?.invalid
+      "
+    >
+
+      Name must be at least 3 characters
+
+    </div>
+
+    <input
+      type="email"
+      placeholder="Email"
+      formControlName="email"
+    >
+
+    <div
+      class="error"
+      *ngIf="
+        form.get('email')?.touched &&
+        form.get('email')?.invalid
+      "
+    >
+
+      Valid email required
+
+    </div>
+
+    <input
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+    >
+
+    <div
+      class="error"
+      *ngIf="
+        form.get('password')?.touched &&
+        form.get('password')?.invalid
+      "
+    >
+
+      Password must be at least 6 characters
+
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="loading"
+    >
+
+      {{ loading ? 'Registering...' : 'Register' }}
+
+    </button>
+
+    <div
+      class="error"
+      *ngIf="error"
+    >
+
+      {{ error }}
+
+    </div>
+
+  </form>
+
+</div>

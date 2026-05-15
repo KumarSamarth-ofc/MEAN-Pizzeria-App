@@ -1,1 +1,15 @@
-<p>home works!</p>
+<!-- home.component.html -->
+<h2>Bestsellers</h2>
+<div class="card-grid">
+<div class="card" *ngFor="let pizza of pizzas">
+<img [src]="pizza.imageUrl" alt="{{pizza.name}}">
+<h3>{{pizza.name}}</h3>
+<div class="price">₹{{pizza.price}}</div>
+<div class="veg-indicator" [ngClass]="{'veg': pizza.isVeg, 'non-veg': !
+pizza.isVeg}"></div>
+<p>{{pizza.description}}</p>
+<div><strong>Ingredients:</strong> {{pizza.ingredients.map(i =>
+i.name).join(', ')}}</div>
+<button (click)="addToCart(pizza)">Add To Cart</button>
+</div>
+</div>
